@@ -1,12 +1,13 @@
 {
-  "name"         : "node-web-scrape",
-  "version"      : "0.0.1",
-  "description"  : "Scrape le web.",
-  "main"         : "server.js",
-  "author"       : "Scotch",
-  "dependencies" : {
-    "express"    : "latest",
-    "request"    : "latest",
-    "cheerio"    : "latest"
+  "name": "node-web-scrape",
+  "version": "0.0.1",
+  "description": "Scrape le web.",
+  "main": "server.js",
+  "author": "",
+  "dependencies": {
+    "express": "~4.3.0",
+    "request": "~2.36.1",
+    "cheerio": "~0.16.0",
+    "async": "^0.9.0"
   }
 }
