@@ -12,8 +12,27 @@ $('#search-btn').click(function(){
 })
 
 $('.table-mp3clan').on('click', 'td.th-dl a' , function() {
-    link = $(this).data('link');
-    title = $(this)
+
+    $.ajax({
+       url : 'dl', 
+       type : 'GET', 
+       dataType : 'json',
+       data: {	title: $(this).data('title'),
+       			link: $(this).data('link'), 
+       			site: $(this).data('site')
+       },
+       success : function(json, statut){
+       		// $.each(json[0], function(i, item) {
+			//     updateTable('.table-mp3clan', this.title, '00', '320', this.link, 'mp3clan')
+			// });
+			// $('.table-mp3clan .status').removeClass('fa-refresh').removeClass('fa-spin');
+       },
+       error : function(resultat, statut, erreur){
+       		console.log(resultat);
+         
+       },
+   });
+   	
 });
 
 function doSearch() {
