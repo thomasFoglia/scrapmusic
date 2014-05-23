@@ -11,6 +11,11 @@ $('#search-btn').click(function(){
 	doSearch();
 })
 
+$('.table-mp3clan').on('click', 'td.th-dl a' , function() {
+    link = $(this).data('link');
+    title = $(this)
+});
+
 function doSearch() {
 	var query = $('#search-input').val();
 	if (query != "") {
@@ -23,12 +28,12 @@ function doSearch() {
 	}
 }
 
-function updateTable(selector, title, duration, kbps, link) {
+function updateTable(selector, title, duration, kbps, link, site) {
 	var tr = $('<tr></tr>')
 		.append('<td>' + title + '</td>')
 		.append('<td>' + duration + '</td>')
 		.append('<td>' + kbps + '</td>')
-		.append('<td class="th-dl"><a href="' + link + '"><i class="fa fa-lg fa-arrow-down"></i></a></td>');
+		.append('<td class="th-dl"><a href="#" data-title="' + title + '" data-link="' + link + '" data-site="' + site + '"><i class="fa fa-lg fa-arrow-down"></i></a></td>');
 	$(selector + ' tbody').append(tr);
 }
 
@@ -42,21 +47,17 @@ function htmlEncode(s)
 
 
 function search_mp3clan(query) {
-
 	$.ajax({
-       url : 'scrape?q='+ query, 
+       url : 'scrape', 
        type : 'GET', 
-
-       dataType : 'json' ,
+       dataType : 'json',
+       data: {q: query},
 
        success : function(json, statut){
-       		console.log(json);
-
        		$.each(json[0], function(i, item) {
-			    updateTable('.table-mp3clan', this.title, '00', '320', this.link)
-			})
-
-       		
+			    updateTable('.table-mp3clan', this.title, '00', '320', this.link, 'mp3clan')
+			});
+			$('.table-mp3clan .status').removeClass('fa-refresh').removeClass('fa-spin');
        },
        error : function(resultat, statut, erreur){
        		console.log(resultat);
