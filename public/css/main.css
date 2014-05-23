@@ -1,0 +1,25 @@
+body {
+	font-family: 'Raleway', sans-serif;
+	padding-top: 80px;
+}
+
+table {
+	max-height: 24em;
+	overflow-y: scroll;
+}
+
+.container {
+	font-size: 75%;
+}
+
+.jumbotron {
+	padding: 1em;
+}
+
+.jumbotron h2 {
+	margin: 0 0 .2em 0;
+}
+
+.th-dl {
+	text-align: center;
+}
